@@ -1,0 +1,71 @@
+{
+  "description": "各智能体边界与典型场景用例：覆盖冷/热启动、多模式、材料变体、险种组合与服务链路",
+  "agents": {
+    "AG-RA": {
+      "name": "风险评估",
+      "cases": [
+        {"id": "RA-ENT-ROBOT", "title": "企业评估·工业机器人·热启动", "boundary": ["warm", "enterprise", "有尽调材料"], "mode": "enterprise", "enterprise": "星衡智能装备股份有限公司", "lifecycle": true},
+        {"id": "RA-ENT-MED", "title": "企业评估·医疗器械", "boundary": ["warm", "enterprise", "高监管"], "mode": "enterprise", "enterprise": "康衡医疗器械有限公司", "lifecycle": true},
+        {"id": "RA-ENT-MAT", "title": "企业评估·新材料", "boundary": ["warm", "enterprise"], "mode": "enterprise", "enterprise": "碳源新材料科技股份有限公司", "lifecycle": true},
+        {"id": "RA-ENT-AI", "title": "企业评估·人工智能软件", "boundary": ["warm", "cyber", "ip"], "mode": "enterprise", "enterprise": "深瞳智算科技有限公司", "lifecycle": true, "target_lines": ["CY01", "IP06"]},
+        {"id": "RA-ENT-SEMI", "title": "企业评估·半导体设备", "boundary": ["warm", "高价值设备"], "mode": "enterprise", "enterprise": "晶创半导体设备有限公司", "lifecycle": true, "target_lines": ["RD08", "RD09"]},
+        {"id": "RA-ENT-SMALL", "title": "企业评估·小型样本·无生命周期", "boundary": ["warm", "lifecycle=false"], "mode": "enterprise", "enterprise": "擎川机器人技术有限公司", "lifecycle": false},
+        {"id": "RA-ENT-LOSS", "title": "企业评估·亏损企业", "boundary": ["warm", "负利润"], "mode": "enterprise", "enterprise": "锐驰精密机器人科技有限公司", "lifecycle": true},
+        {"id": "RA-ENT-COLD-TRACK", "title": "企业评估·未知赛道冷启动", "boundary": ["cold", "未知行业"], "mode": "enterprise", "enterprise": "量子隧穿计算有限公司", "lifecycle": true},
+        {"id": "RA-NEED-EQ", "title": "需求驱动·设备损坏保障", "boundary": ["cold", "need", "无企业档案"], "mode": "need", "background": "面向精密制造企业的科技保险产品开发，覆盖中试与量产阶段研发设备。", "customer_need": "希望保险分担关键研发设备在约定事故中损坏的损失，以及因设备损坏导致的研发中断费用。", "subject_name": "精密设备损坏与研发中断保障"},
+        {"id": "RA-NEED-CYBER", "title": "需求驱动·网络安全与数据泄露", "boundary": ["cold", "need", "cyber"], "mode": "need", "background": "人工智能与云计算企业面临勒索与数据泄露风险，需要可核保的网络安全责任产品。", "customer_need": "希望保障网络攻击导致的业务中断、应急响应费用、客户通知与监管责任相关损失。", "subject_name": "人工智能网络安全责任保障"},
+        {"id": "RA-NEED-IP", "title": "需求驱动·专利侵权责任", "boundary": ["cold", "need", "ip"], "mode": "need", "background": "出海科技企业频繁遭遇专利诉讼，需要专利侵权责任险产品。", "customer_need": "希望转移被诉专利侵权的抗辩费用与损害赔偿风险，覆盖美国与欧洲主要市场。", "subject_name": "出海专利侵权责任保障"},
+        {"id": "RA-NEED-RD", "title": "需求驱动·研发费用损失", "boundary": ["cold", "need", "rd_cost"], "mode": "need", "background": "生物医药与医疗器械企业临床试验周期长、沉没成本高。", "customer_need": "希望在关键里程碑失败或不可抗力导致项目终止时，分担已发生的研发费用损失。", "subject_name": "临床试验研发费用损失保障"},
+        {"id": "RA-NEED-AMBIG", "title": "需求驱动·表述模糊边界", "boundary": ["cold", "need", "歧义追问"], "mode": "need", "background": "某地方政府希望为园区科技企业提供综合保障。", "customer_need": "希望保险分担失败或中断的支出，以及相关责任风险。", "subject_name": "园区科技企业综合保障"},
+        {"id": "RA-TRACK-ROBOT", "title": "赛道评估·工业机器人", "boundary": ["track", "多样本聚合"], "mode": "track", "track": "工业机器人", "members": ["星衡智能装备股份有限公司", "锐驰精密机器人科技有限公司", "擎川机器人技术有限公司"], "target_lines": ["RD08", "RD09"], "lifecycle": true},
+        {"id": "RA-TRACK-AI", "title": "赛道评估·人工智能软件", "boundary": ["track", "cyber+ip"], "mode": "track", "track": "人工智能软件", "members": ["深瞳智算科技有限公司", "明澜数据科技有限公司"], "target_lines": ["CY01", "IP06"], "lifecycle": true}
+      ]
+    },
+    "AG-CD": {
+      "name": "条款设计",
+      "cases": [
+        {"id": "CD-ENT-ROBOT", "title": "企业定制条款·机器人", "boundary": ["enterprise", "偏好问卷"], "project_type": "enterprise", "enterprise": "星衡智能装备股份有限公司", "target_lines": ["RD08", "RD09"], "preference": {"q1": 2, "q3": 3, "q4": 4}},
+        {"id": "CD-ENT-CONS", "title": "企业定制条款·保守偏好", "boundary": ["enterprise", "conservative"], "project_type": "enterprise", "enterprise": "康衡医疗器械有限公司", "target_lines": ["RD08", "RD01"], "preference": {"q1": 5, "q2": 2, "q3": 1, "q4": 5}},
+        {"id": "CD-TRACK-ROBOT", "title": "赛道通用条款·机器人", "boundary": ["track", "无偏好"], "project_type": "track", "track": "工业机器人", "members": ["星衡智能装备股份有限公司", "锐驰精密机器人科技有限公司"], "target_lines": ["RD08", "RD09"]},
+        {"id": "CD-NEED-EQ", "title": "需求驱动条款·设备损坏", "boundary": ["need", "无偏好"], "project_type": "need", "background": "精密制造企业研发设备保障产品开发。", "customer_need": "希望保险分担关键研发设备损坏损失与研发中断费用。", "name": "精密设备损坏与研发中断保障"},
+        {"id": "CD-NEED-CYBER", "title": "需求驱动条款·网络安全", "boundary": ["need", "cyber"], "project_type": "need", "background": "人工智能企业网络安全责任产品。", "customer_need": "希望保障网络攻击导致的业务中断、应急响应与数据泄露相关损失。", "name": "人工智能网络安全责任保障"}
+      ]
+    },
+    "AG-AP": {
+      "name": "精算定价",
+      "cases": [
+        {"id": "AP-FOLLOW-CD", "title": "随条款流水线定价（企业/赛道/需求各路径）", "boundary": ["跟随上游", "need_pricing与常规定价"], "note": "由流水线在条款冻结后自动触发，覆盖 AG-AP 主运行与 need_pricing"}
+      ]
+    },
+    "AG-UW": {
+      "name": "承保风控",
+      "cases": [
+        {"id": "UW-NORMAL", "title": "标准件·正常材料", "boundary": ["standard", "正常"], "enterprise": "星衡智能装备股份有限公司", "variant": "normal", "lines": ["RD08", "RD09"], "sum_insured": 2.5e7},
+        {"id": "UW-WORN", "title": "设备老化照片", "boundary": ["worn", "图像质量"], "enterprise": "锐驰精密机器人科技有限公司", "variant": "worn", "lines": ["RD08", "RD09"], "sum_insured": 2.2e7},
+        {"id": "UW-FRAUD", "title": "疑似欺诈件", "boundary": ["fraud", "发票虚高", "篡改照片", "中介"], "enterprise": "华岩先进材料有限公司", "variant": "fraud", "lines": ["RD08", "RD09"], "sum_insured": 1.8e7},
+        {"id": "UW-VULN", "title": "网络高危未修补", "boundary": ["vuln", "cyber"], "enterprise": "深瞳智算科技有限公司", "variant": "vuln", "lines": ["CY01", "IP06"], "sum_insured": 3.0e7},
+        {"id": "UW-HIGH-SI", "title": "高保额边界", "boundary": ["高保额", "保额/资产比"], "enterprise": "晶创半导体设备有限公司", "variant": "normal", "lines": ["RD08", "RD09"], "sum_insured": 8.0e7},
+        {"id": "UW-SMALL", "title": "小保额初创", "boundary": ["低保额"], "enterprise": "擎川机器人技术有限公司", "variant": "normal", "lines": ["RD08", "RD09"], "sum_insured": 3.0e6},
+        {"id": "UW-MED", "title": "医疗器械企业", "boundary": ["医疗", "跨赛道产品"], "enterprise": "康衡医疗器械有限公司", "variant": "normal", "lines": ["RD08", "RD09"], "sum_insured": 1.5e7},
+        {"id": "UW-SEMI", "title": "半导体设备企业", "boundary": ["半导体"], "enterprise": "芯测精密仪器科技有限公司", "variant": "normal", "lines": ["RD08", "RD09"], "sum_insured": 2.0e7}
+      ]
+    },
+    "AG-RW": {
+      "name": "风险预警",
+      "cases": [
+        {"id": "RW-PLAN", "title": "监测方案生成", "boundary": ["purpose=plan"], "purpose": "plan"},
+        {"id": "RW-REPORT", "title": "风险管理月报", "boundary": ["purpose=main", "period=month"], "purpose": "main", "period": "month"},
+        {"id": "RW-ALERT", "title": "预警研判（仿真触发）", "boundary": ["purpose=alert", "设备退化/攻击"], "purpose": "alert"},
+        {"id": "RW-INCIDENT", "title": "事故响应", "boundary": ["purpose=incident", "红色预警联动"], "purpose": "incident"}
+      ]
+    },
+    "AG-CL": {
+      "name": "定损理赔",
+      "cases": [
+        {"id": "CL-EQUIP", "title": "设备损坏多方责任", "boundary": ["多方责任", "设备+中断", "图像定损"], "kind": "equipment"},
+        {"id": "CL-BREACH", "title": "数据泄露网络安全", "boundary": ["cyber", "监管罚款", "营业中断"], "kind": "breach"},
+        {"id": "CL-PARTIAL", "title": "材料不齐·待补件边界", "boundary": ["材料不全"], "kind": "partial"}
+      ]
+    }
+  }
+}

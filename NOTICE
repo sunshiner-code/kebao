@@ -1,0 +1,21 @@
+kw_system (techins)
+Copyright 2026 kw_system contributors
+
+This product includes software developed by the kw_system contributors.
+
+Third-party and data notes
+--------------------------
+
+1. All enterprise profiles, financial figures, materials, policies, claims and
+   images in this repository are synthetic demo data generated for testing and
+   demonstration. They do not describe any real person or company.
+
+2. Insurance product names, clause texts, rates and actuarial parameters in
+   src/techins/knowledge are illustrative examples for technical demonstration.
+   They are not the filed or official documents of any insurer and must not be
+   used as a real insurance product, legal or actuarial opinion.
+
+3. Before using this software in production, replace the example knowledge base
+   with your own reviewed and compliant content.
+
+See the LICENSE file for the full Apache License 2.0 text.
